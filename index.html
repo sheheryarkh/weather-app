@@ -1,0 +1,70 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <h1 class=" bg-gray-800 text-center text-white py-12 text text-5xl font-bold italic">weather app</h1>
+
+<form class="flex ml-96 mt-36 gap-2" id="dataentry"> 
+    <input class="outline rounded" type="text" placeholder="Enter city" id="city"> 
+    <br>
+    <button class="outline rounded px-1 py" type="submit">Get weather</button> 
+
+    <div>
+        <p id="centigrade"></p>
+    </div>
+</form>
+
+<script>
+
+ const data = document.querySelector("#dataentry"); 
+ const city= document.querySelector("#city")
+ const centigrade = document.getElementById("centigrade")
+
+const APIKEY ="https://api.weatherapi.com/v1/current.json?key=25175e31b7074cfc895204529222906"
+data.addEventListener("submit",(event)=>{
+    event.preventDefault();
+
+
+const getdata =  async ()=>{
+  const result = await fetch(`${APIKEY}&q=${city.value}`);
+
+if(result.ok)
+{}
+if(!result.ok){   
+     alert('please enter a valid city name')}
+else{
+
+}
+    
+ const data = await result.json()
+
+ centigrade.innerText = await (`${data.current.temp_c}°C`)
+
+scroll
+ 
+}
+
+
+getdata();
+
+})
+
+
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
